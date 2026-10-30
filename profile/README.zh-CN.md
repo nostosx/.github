@@ -8,49 +8,50 @@
 
 <p align="center"><a href="https://github.com/nostosx/.github/blob/main/profile/README.md">English</a> · 简体中文</p>
 
-我们为 AI Agent 与后端服务构建可组合的 Go 开源库。
-通过小接口、显式组合和按需依赖，让应用的行为容易理解，也让开发者掌握控制权。
+我们为 AI Agent 与后端服务构建可组合的 Go 开源库和工程工具。
+通过小契约、显式应用装配和独立版本的扩展，让行为与资源归属掌握在开发者手中。
 
 ## 从这里开始
 
 | 项目 | 用来构建什么 | 开始使用 |
 | --- | --- | --- |
-| [**agentx**](https://github.com/nostosx/agentx) | 构建能够调用工具、流式响应、维护会话并恢复中断任务的 Agent。 | [快速开始](https://github.com/nostosx/agentx#quick-start) · [可运行示例](https://github.com/nostosx/agentx-examples) |
-| [**servex**](https://github.com/nostosx/servex) | 构建具有显式生命周期、协议无关 Endpoint 与可替换基础设施的后端服务。 | [接入指南](https://github.com/nostosx/servex#getting-started) · [HTTP 与 gRPC 示例](https://github.com/nostosx/servex-examples) |
-| [**kitx**](https://github.com/nostosx/kitx) | 按需解决重试、受限并发、缓存、限流、熔断与 I/O 问题。 | [使用示例](https://github.com/nostosx/kitx#usage) · [批处理、缓存与流水线](https://github.com/nostosx/kitx-examples) |
+| [**agentx**](https://github.com/nostosx/agentx) | 工具调用、多模态、流式响应、可恢复会话、工作流、检索与评测；独立图片、产物和搜索契约支持对话之外的能力。 | [快速开始](https://github.com/nostosx/agentx#quick-start) · [可运行应用](https://github.com/nostosx/agentx-examples) |
+| [**servex**](https://github.com/nostosx/servex) | 显式启动与关闭、健康与就绪检查、类型化 CQRS，以及协议和基础设施契约。 | [接入指南](https://github.com/nostosx/servex#getting-started) · [HTTP/gRPC 应用](https://github.com/nostosx/servex-examples) |
+| [**kitx**](https://github.com/nostosx/kitx) | 退避、受限并发、共享执行、缓存、限流、熔断与 I/O 等通用基础组件。 | [使用示例](https://github.com/nostosx/kitx#usage) · [批处理、缓存与流水线](https://github.com/nostosx/kitx-examples) |
+| [**nostosx-cli**](https://github.com/nostosx/nostosx-cli) | 单体或微服务骨架，独立的服务和业务上下文，类型化 Command/Query 装配、TOML 配置和可选 HTTP/gRPC 契约。 | [安装与生成](https://github.com/nostosx/nostosx-cli#readme) · [发布与二进制](https://github.com/nostosx/nostosx-cli/releases) |
 
-从需要的项目或包开始，在应用中按需组合。
-agentx 与 servex 核心只依赖 Go 标准库和 kitx；kitx 本身只依赖标准库。
+从需要的包开始，把构造和生命周期管理留在应用装配层，让领域与应用代码独立于协议和具体基础设施。
+kitx 只依赖 Go 标准库；agentx 核心使用标准库和选定的 kitx 包；
+servex 保留契约与精简应用运行时，不引入外部模块依赖。
 
-### 按需接入扩展
+## 按需组合扩展
 
-- [**agentx-contrib**](https://github.com/nostosx/agentx-contrib)：模型 Provider、文件与 SQL 存储、OpenTelemetry、日志与重试。
-- [**servex-contrib**](https://github.com/nostosx/servex-contrib)：gRPC、消息、缓存、数据库集成、配置、服务发现、可观测性与中间件。
+- [**agentx-contrib**](https://github.com/nostosx/agentx-contrib)：模型 Provider、OpenAI/Gemini 图片生成、文件/SQL 状态与文件/S3 产物、Embedding 与缓存、模型 fallback、RAG 与搜索适配、文档/OCR 解析、OpenTelemetry，以及 trace/评测开发查看页。
+- [**servex-contrib**](https://github.com/nostosx/servex-contrib)：HTTP/gRPC 与 SSE/WebSocket/RPC 适配、认证和浏览器会话、SQL/GORM 与迁移、Redis、消息、调度、S3 与协调、配置、服务发现、日志、遥测和资源生命周期。
 
-Contrib 模块独立安装、独立版本化。只引入应用需要的模块，具体安装方式见对应扩展仓库的 README。
+Contrib 模块独立安装、独立版本化。agentx-contrib 可通过显式适配复用 servex 基础设施；
+核心不反向依赖 contrib。凭据、客户端、存储后端和资源关闭归属由应用决定。
+
+## 从完整应用学习
+
+[agentx-examples](https://github.com/nostosx/agentx-examples) 演示 HTTP Agent 服务、应用自有工具与审批边界、持久状态，以及显式装配的 CQRS 命令。
+[servex-examples](https://github.com/nostosx/servex-examples) 在 HTTP/gRPC 间复用类型化用例，并组合带认证的笔记应用、会话、可选数据库、缓存、对象存储和后台任务。
+默认使用内存，外部服务按需选择。两个项目都说明配置、启动、验证与清理，让装配过程清晰可见。
 
 ## 为什么叫 nostosx？
 
-*Nostos* 意为归来、归乡。对我们而言，它把探索与回归本质联系在一起：
-清晰的代码、有用的抽象，以及让开发者掌握控制权的工具。
-
+*Nostos* 意为归来、归乡。我们向外探索新能力，把有用的收获带回清晰的接口、容易理解的代码，以及开发者的控制权。
 归帆与环抱它的海浪承载着这个想法：向外探索，也有归处。
-我们把探索中的收获，带回小而可复用的组件中。
-
-## 我们如何构建
-
-- **保持核心精简。** 将核心契约、参考实现与可选扩展分开，通过 kitx 复用通用基础组件。
-- **让行为显式可见。** 使用构造函数、普通函数与清晰的状态和资源归属，由应用决定如何组合。
-- **让示例便于使用。** 在可运行的正常流程之外，也说明预期行为、取消、失败与资源清理。
 
 ## 发布与贡献
 
-agentx、servex、kitx 均已发布 v1.0.0。变更请分别查看
-[agentx 发布记录](https://github.com/nostosx/agentx/releases)、
-[servex 发布记录](https://github.com/nostosx/servex/releases) 与
-[kitx 发布记录](https://github.com/nostosx/kitx/releases)。
-示例项目的版本标识源码快照及其依赖；各仓库分别说明兼容性与发布策略。
+各仓库有独立的版本与兼容策略。具体版本以对应安装指南和 CHANGELOG 为准；
+contrib 标签带模块路径，CLI 发布包含各平台二进制，示例版本标识源码快照及其依赖。
 
-欢迎提交带有复现步骤的问题、文档改进和范围明确的 Pull Request。
-请先阅读对应仓库的 README 与 CONTRIBUTING.md；较大的改动先通过 Issue 讨论。
-安全问题请按对应仓库的 SECURITY.md 私下报告。
+查看 [Agent 发布](https://github.com/nostosx/agentx/releases)、
+[服务扩展](https://github.com/nostosx/servex-contrib/releases)、
+[Agent 扩展](https://github.com/nostosx/agentx-contrib/releases) 和
+[CLI 发布](https://github.com/nostosx/nostosx-cli/releases)。
+
+请先阅读对应仓库的 README 与 CONTRIBUTING.md，再提交范围明确的 Pull Request。
+欢迎提供复现、文档改进与集成测试。安全问题请按对应仓库的 SECURITY.md 私下报告。
