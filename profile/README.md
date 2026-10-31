@@ -16,7 +16,7 @@ integrations keep behavior and resource ownership in your hands.
 
 | Project | Build with it | Start here |
 | --- | --- | --- |
-| [**agentx**](https://github.com/nostosx/agentx) | Tool-using and multimodal agents, streaming, resumable conversations, workflows, retrieval and evaluation. Independent image generation, artifact and search contracts support capabilities beyond chat. | [Quick start](https://github.com/nostosx/agentx#quick-start) · [Runnable application](https://github.com/nostosx/agentx-examples) |
+| [**agentx**](https://github.com/nostosx/agentx) | Tool-using and multimodal agents, streaming, resumable conversations, workflows, retrieval and evaluation. Independent image generation, artifacts, search, readable web and browser contracts extend its tool capabilities. | [Quick start](https://github.com/nostosx/agentx#quick-start) · [Runnable application](https://github.com/nostosx/agentx-examples) |
 | [**servex**](https://github.com/nostosx/servex) | Backend services with explicit startup/shutdown, health and readiness, typed CQRS, and transport/infrastructure contracts. | [Getting started](https://github.com/nostosx/servex#getting-started) · [HTTP/gRPC application](https://github.com/nostosx/servex-examples) |
 | [**kitx**](https://github.com/nostosx/kitx) | Focused building blocks for backoff, bounded concurrency, shared work, caching, rate limiting, circuit breaking and I/O. | [Usage](https://github.com/nostosx/kitx#usage) · [Batch, cache and pipeline examples](https://github.com/nostosx/kitx-examples) |
 | [**nostosx-cli**](https://github.com/nostosx/nostosx-cli) | Clean monolith or microservice layouts, independent services and business contexts, typed Command/Query wiring, TOML configuration and optional HTTP/gRPC contracts. | [Install and generate](https://github.com/nostosx/nostosx-cli#readme) · [Releases and binaries](https://github.com/nostosx/nostosx-cli/releases) |
@@ -31,7 +31,8 @@ contracts and a small application runtime without external module dependencies.
 
 - [**agentx-contrib**](https://github.com/nostosx/agentx-contrib): model providers,
   OpenAI/Gemini image generation, file/SQL state and file/S3 artifacts, embeddings and
-  caching, model fallback, RAG and search adapters, document/OCR parsers,
+  caching, model fallback, readable web and isolated Chromium sessions, scoped
+  GitHub/Notion/Feishu loaders, writable Qdrant/Elasticsearch indexes, search adapters, document/OCR parsers,
   OpenTelemetry, and a trace/evaluation development viewer.
 - [**servex-contrib**](https://github.com/nostosx/servex-contrib): HTTP/gRPC and
   SSE/WebSocket/RPC adapters; authentication and browser sessions; SQL/GORM and

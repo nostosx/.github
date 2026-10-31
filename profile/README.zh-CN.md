@@ -15,7 +15,7 @@
 
 | 项目 | 用来构建什么 | 开始使用 |
 | --- | --- | --- |
-| [**agentx**](https://github.com/nostosx/agentx) | 工具调用、多模态、流式响应、可恢复会话、工作流、检索与评测；独立图片、产物和搜索契约支持对话之外的能力。 | [快速开始](https://github.com/nostosx/agentx#quick-start) · [可运行应用](https://github.com/nostosx/agentx-examples) |
+| [**agentx**](https://github.com/nostosx/agentx) | 工具调用、多模态、流式响应、可恢复会话、工作流、检索与评测；独立图片、产物、搜索、网页与浏览器契约扩展工具能力。 | [快速开始](https://github.com/nostosx/agentx#quick-start) · [可运行应用](https://github.com/nostosx/agentx-examples) |
 | [**servex**](https://github.com/nostosx/servex) | 显式启动与关闭、健康与就绪检查、类型化 CQRS，以及协议和基础设施契约。 | [接入指南](https://github.com/nostosx/servex#getting-started) · [HTTP/gRPC 应用](https://github.com/nostosx/servex-examples) |
 | [**kitx**](https://github.com/nostosx/kitx) | 退避、受限并发、共享执行、缓存、限流、熔断与 I/O 等通用基础组件。 | [使用示例](https://github.com/nostosx/kitx#usage) · [批处理、缓存与流水线](https://github.com/nostosx/kitx-examples) |
 | [**nostosx-cli**](https://github.com/nostosx/nostosx-cli) | 单体或微服务骨架，独立的服务和业务上下文，类型化 Command/Query 装配、TOML 配置和可选 HTTP/gRPC 契约。 | [安装与生成](https://github.com/nostosx/nostosx-cli#readme) · [发布与二进制](https://github.com/nostosx/nostosx-cli/releases) |
@@ -26,7 +26,7 @@ servex 保留契约与精简应用运行时，不引入外部模块依赖。
 
 ## 按需组合扩展
 
-- [**agentx-contrib**](https://github.com/nostosx/agentx-contrib)：模型 Provider、OpenAI/Gemini 图片生成、文件/SQL 状态与文件/S3 产物、Embedding 与缓存、模型 fallback、RAG 与搜索适配、文档/OCR 解析、OpenTelemetry，以及 trace/评测开发查看页。
+- [**agentx-contrib**](https://github.com/nostosx/agentx-contrib)：模型 Provider、OpenAI/Gemini 图片生成、文件/SQL 状态与文件/S3 产物、Embedding 与缓存、模型 fallback、网页正文与隔离 Chromium 会话、GitHub/Notion/飞书数据连接器、可写 Qdrant/Elasticsearch 索引与搜索适配、文档/OCR 解析、OpenTelemetry，以及 trace/评测开发查看页。
 - [**servex-contrib**](https://github.com/nostosx/servex-contrib)：HTTP/gRPC 与 SSE/WebSocket/RPC 适配、认证和浏览器会话、SQL/GORM 与迁移、Redis、消息、调度、S3 与协调、配置、服务发现、日志、遥测和资源生命周期。
 
 Contrib 模块独立安装、独立版本化。agentx-contrib 可通过显式适配复用 servex 基础设施；
