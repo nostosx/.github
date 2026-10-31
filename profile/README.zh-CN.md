@@ -26,17 +26,17 @@ servex 保留契约与精简应用运行时，不引入外部模块依赖。
 
 ## 按需组合扩展
 
-- [**agentx-contrib**](https://github.com/nostosx/agentx-contrib)：模型 Provider、OpenAI/Gemini 图片生成、文件/SQL 状态与文件/S3 产物、Embedding 与缓存、模型 fallback、网页正文与隔离 Chromium 会话、GitHub/Notion/飞书数据连接器、可写 Qdrant/Elasticsearch 索引与搜索适配、文档/OCR 解析、OpenTelemetry，以及 trace/评测开发查看页。
-- [**servex-contrib**](https://github.com/nostosx/servex-contrib)：HTTP/gRPC 与 SSE/WebSocket/RPC 适配、认证和浏览器会话、SQL/GORM 与迁移、Redis、消息、调度、S3 与协调、配置、服务发现、日志、遥测和资源生命周期。
+- [**agentx-contrib**](https://github.com/nostosx/agentx-contrib)：模型 Provider、OpenAI/Gemini 图片生成、文件/SQL 状态与文件/S3 产物、Embedding 与缓存、模型 fallback、网页正文与隔离 Chromium 会话、GitHub/Notion/飞书数据连接器、可写 Qdrant/Elasticsearch 索引、通用 Servex 向量与全文检索和搜索适配、文档/OCR 解析、OpenTelemetry，以及 trace/评测开发查看页。
+- [**servex-contrib**](https://github.com/nostosx/servex-contrib)：HTTP/gRPC 与 SSE/WebSocket/RPC 适配、认证和浏览器会话、SQL/GORM 与迁移、PostgreSQL 向量与全文检索、事务 PGMQ 与持久 SQL 调度、Redis、消息、调度、S3 与协调、配置、服务发现、日志、遥测和资源生命周期。
 
 Contrib 模块独立安装、独立版本化。agentx-contrib 可通过显式适配复用 servex 基础设施；
 核心不反向依赖 contrib。凭据、客户端、存储后端和资源关闭归属由应用决定。
 
 ## 从完整应用学习
 
-[agentx-examples](https://github.com/nostosx/agentx-examples) 演示 HTTP Agent 服务、应用自有工具与审批边界、持久状态，以及显式装配的 CQRS 命令。
+[agentx-examples](https://github.com/nostosx/agentx-examples) 演示 HTTP Agent 服务、应用自有工具与审批边界、持久状态，以及显式装配的 CQRS 命令；PostgreSQL RAG 示例复用 Servex 后端，通过知识工具返回引用。
 [servex-examples](https://github.com/nostosx/servex-examples) 在 HTTP/gRPC 间复用类型化用例，并组合带认证的笔记应用、会话、可选数据库、缓存、对象存储和后台任务。
-默认使用内存，外部服务按需选择。两个项目都说明配置、启动、验证与清理，让装配过程清晰可见。
+默认使用内存，外部服务按需选择；PostgreSQL 索引示例演示业务写入与入队、向量与全文更新的事务边界。两个项目都说明配置、启动、验证与清理，让装配过程清晰可见。
 
 ## 为什么叫 nostosx？
 

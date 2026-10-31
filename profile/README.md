@@ -32,10 +32,11 @@ contracts and a small application runtime without external module dependencies.
 - [**agentx-contrib**](https://github.com/nostosx/agentx-contrib): model providers,
   OpenAI/Gemini image generation, file/SQL state and file/S3 artifacts, embeddings and
   caching, model fallback, readable web and isolated Chromium sessions, scoped
-  GitHub/Notion/Feishu loaders, writable Qdrant/Elasticsearch indexes, search adapters, document/OCR parsers,
+  GitHub/Notion/Feishu loaders, writable Qdrant/Elasticsearch indexes, generic Servex vector/text retrieval, search adapters, document/OCR parsers,
   OpenTelemetry, and a trace/evaluation development viewer.
 - [**servex-contrib**](https://github.com/nostosx/servex-contrib): HTTP/gRPC and
-  SSE/WebSocket/RPC adapters; authentication and browser sessions; SQL/GORM and
+  SSE/WebSocket/RPC adapters; PostgreSQL vector/text retrieval, transactional PGMQ
+  and persistent SQL schedules; authentication and browser sessions; SQL/GORM and
   migrations; Redis, messaging, scheduling, S3 and coordination; configuration,
   discovery, logging, telemetry and lifecycle integration.
 
@@ -47,11 +48,13 @@ contrib. Applications choose credentials, clients, storage and shutdown ownershi
 
 [agentx-examples](https://github.com/nostosx/agentx-examples) demonstrates an
 HTTP Agent service, application-owned tools and approval boundaries, persistent
-state and an explicitly assembled CQRS command.
+state and an explicitly assembled CQRS command. Its PostgreSQL RAG example
+reuses Servex backends and returns citations through a knowledge tool.
 [servex-examples](https://github.com/nostosx/servex-examples) shares typed use cases
 across HTTP/gRPC and composes authenticated notes, sessions, optional databases,
 caches, object storage and background work. Memory is the default; external
-services are explicit choices. Both projects document configuration, startup,
+services are explicit choices. A PostgreSQL indexing example demonstrates
+business write/enqueue and vector/text update transactions. Both projects document configuration, startup,
 verification and cleanup instead of hiding application assembly in a framework.
 
 ## Why nostosx?
