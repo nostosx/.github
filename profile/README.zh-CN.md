@@ -8,7 +8,7 @@
 
 <p align="center"><a href="https://github.com/nostosx/.github/blob/main/profile/README.md">English</a> · 简体中文</p>
 
-我们为 AI Agent 与后端服务构建可组合的 Go 开源库和工程工具。
+我们为 AI Agent 与后端服务构建可组合的 Go 开源库、工程工具和基础设施。
 通过小契约、显式应用装配和独立版本的扩展，让行为与资源归属掌握在开发者手中。
 
 ## 从这里开始
@@ -19,10 +19,21 @@
 | [**servex**](https://github.com/nostosx/servex) | 显式启动与关闭、健康与就绪检查、类型化 CQRS，以及协议和基础设施契约。 | [接入指南](https://github.com/nostosx/servex#getting-started) · [HTTP/gRPC 应用](https://github.com/nostosx/servex-examples) |
 | [**kitx**](https://github.com/nostosx/kitx) | 退避、受限并发、共享执行、缓存、限流、熔断与 I/O 等通用基础组件。 | [使用示例](https://github.com/nostosx/kitx#usage) · [批处理、缓存与流水线](https://github.com/nostosx/kitx-examples) |
 | [**nostosx-cli**](https://github.com/nostosx/nostosx-cli) | 单体或微服务骨架，独立的服务和业务上下文，类型化 Command/Query 装配、TOML 配置和可选 HTTP/gRPC 契约。 | [安装与生成](https://github.com/nostosx/nostosx-cli#readme) · [发布与二进制](https://github.com/nostosx/nostosx-cli/releases) |
+| [**infrax**](https://github.com/nostosx/infrax) | 数据、身份、网关、存储与可观测组件的 Compose 开发组合和 Kubernetes/K3s 清单。 | [本地启动](https://github.com/nostosx/infrax/blob/main/README.zh-CN.md#本地启动) · [运维说明](https://github.com/nostosx/infrax/blob/main/docs/operations.md) |
 
 从需要的包开始，把构造和生命周期管理留在应用装配层，让领域与应用代码独立于协议和具体基础设施。
 kitx 只依赖 Go 标准库；agentx 核心使用标准库和选定的 kitx 包；
 servex 保留契约与精简应用运行时，不引入外部模块依赖。
+
+## 运行应用所需的基础设施
+
+[infrax](https://github.com/nostosx/infrax) 默认提供 PostgreSQL、Redis、NATS，
+按需选择 MySQL、Consul、Vault、APISIX/etcd、Zitadel、Cerbos、兼容 S3 的 RustFS
+和完整遥测链路。Docker Compose 与 Kubernetes/K3s 共用组件配置；Kustomize
+部署组合选择能力，环境 overlay 提供凭据和部署设置。
+
+应用选择 contrib 适配器，负责客户端、迁移、账号和业务策略；infrax 负责服务部署与持久数据。
+单副本本地基线提供隔离验收；生产环境仍需独立验证隔离、TLS、容量与备份恢复。
 
 ## 按需组合扩展
 
@@ -47,6 +58,7 @@ Contrib 模块独立安装、独立版本化。agentx-contrib 可通过显式适
 
 各仓库有独立的版本与兼容策略。具体版本以对应安装指南和 CHANGELOG 为准；
 contrib 标签带模块路径，CLI 发布包含各平台二进制，示例版本标识源码快照及其依赖。
+infrax 版本标识部署清单、配置与镜像基线快照。
 
 查看 [Agent 发布](https://github.com/nostosx/agentx/releases)、
 [服务扩展](https://github.com/nostosx/servex-contrib/releases)、
